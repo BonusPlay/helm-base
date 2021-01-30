@@ -1,0 +1,12 @@
+{{- range .Values.services -}}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- include "base.metadata" $ | nindent 2 }}
+spec:
+  type: {{ .type }}
+  selector:
+    {{- include "base.selectorlabels" $ | nindent 4 }}
+  ports:
+    {{- toYaml .ports | nindent 4 }}
+{{- end -}}

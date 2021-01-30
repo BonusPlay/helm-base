@@ -1,0 +1,23 @@
+{{ range $cur := .Values.deployments }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  {{- include "base.metadata" $ | nindent 2 }}
+spec:
+  replicas: {{ $cur.replicas }}
+  selector:
+    matchLabels:
+      {{- include "base.selectorlabels" $ | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "base.selectorlabels" $ | nindent 8 }}
+    spec:
+      containers:
+        {{- include "base.container" . | nindent 8 }}
+      volumes:
+        {{- toYaml $cur.volumes | nindent 8 }}
+      nodeSelector:
+        {{- toYaml $cur.nodeSelector | nindent 8 }}
+---
+{{- end -}}

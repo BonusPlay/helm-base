@@ -1,0 +1,5 @@
+apiVersion: v2
+name: base
+description: A base helm chart for deploying simple applications
+type: application
+version: 0.1.0
