@@ -2,6 +2,8 @@
 - name: {{ .name | default (randAlpha 10) | quote }}
   image: "{{ .image.repository }}:{{ .image.tag }}"
   imagePullPolicy: {{ .image.pullPolicy }}
+  args:
+    {{- toYaml .args | nindent 4 }}
   volumeMounts:
     {{- toYaml .volumeMounts | nindent 4 }}
   ports:

@@ -1,22 +1,39 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingVolume) -}}
+{{- range $cur := .Values.persistence -}}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   {{- include "base.metadata" $ | nindent 2 }}
 spec:
   accessModes:
-    - {{ .Values.persistence.accessMode | quote }}
+    - {{ $cur.accessMode | quote }}
   capacity:
-    storage: {{ .Values.persistence.size | quote }}
-{{- if .Values.persistence.storageClassName }}
-{{- if (eq "-" .Values.persistence.storageClassName) }}
+    storage: {{ $cur.size | quote }}
+{{- if $cur.storageClassName }}
+{{- if (eq "-" $cur.storageClassName) }}
   storageClassName: ""
 {{- else }}
-  storageClassName: "{{ .Values.persistence.storageClassName }}"
+  storageClassName: "{{ $cur.storageClassName }}"
 {{- end }}
 {{- end }}
-{{- if .Values.persistence.hostPath }}
+{{- if $cur.reclaimPolicy }}
+  persistanceVolumeReclaimPolicy: "{{ $cur.reclaimPolicy }}"
+{{- end }}
+{{- if $cur.hostPath }}
   hostPath:
-    path: "{{ .Values.persistence.hostPath }}"
+    path: "{{ $cur.hostPath }}"
+{{- end }}
+{{- if $cur.localPath }}
+  local:
+    path: "{{ $cur.localPath }}"
+{{- end }}
+{{- if $cur.nodeSelector }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - {{ $cur.nodeSelector }}
 {{- end }}
 {{- end }}
