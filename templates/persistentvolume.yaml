@@ -3,6 +3,9 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   {{- include "base.metadata" $ | nindent 2 }}
+  {{- if $cur.name }}
+  name: "{{ $cur.name }}"
+  {{- end }}
 spec:
   accessModes:
     - {{ $cur.accessMode | quote }}
@@ -36,4 +39,5 @@ spec:
               values:
                 - {{ $cur.nodeSelector }}
 {{- end }}
+---
 {{- end }}

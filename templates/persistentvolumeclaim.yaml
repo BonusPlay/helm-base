@@ -3,6 +3,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   {{- include "base.metadata" $ | nindent 2 }}
+  {{- if $cur.name }}
+  name: "{{ $cur.name }}"
+  {{- end }}
 spec:
   accessModes:
     - {{ $cur.accessMode | quote }}
@@ -16,4 +19,5 @@ spec:
   storageClassName: "{{ $cur.storageClassName }}"
 {{- end }}
 {{- end }}
+---
 {{- end -}}
