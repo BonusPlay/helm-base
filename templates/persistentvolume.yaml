@@ -16,7 +16,7 @@ spec:
 {{- end }}
 {{- end }}
 {{- if $cur.reclaimPolicy }}
-  persistanceVolumeReclaimPolicy: "{{ $cur.reclaimPolicy }}"
+  persistentVolumeReclaimPolicy: "{{ $cur.reclaimPolicy }}"
 {{- end }}
 {{- if $cur.hostPath }}
   hostPath:
