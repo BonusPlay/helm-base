@@ -1,5 +1,6 @@
 nameOverride: ""
 fullnameOverride: ""
+namespaceOverride: ""
 
 deployments:
   - image:
@@ -14,14 +15,7 @@ deployments:
     replicas: 1
     volumeMounts: []
     resources: {}
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+    securityContext: {}
 
 services:
   - type: ClusterIP
@@ -44,10 +38,6 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-persistence:
-  enabled: false
+persistence: []
 
 podAnnotations: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000

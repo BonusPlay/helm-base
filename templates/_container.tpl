@@ -19,4 +19,7 @@
           name {{ .secretName }}
           key: {{ .secretKey }}
     {{- end -}}
+  {{- if .securityContext }}
+    {{- toYaml .securityContext | nindent 2 }}
+  {{- end }}
 {{- end -}}

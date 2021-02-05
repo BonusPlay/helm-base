@@ -1,8 +1,10 @@
 {{- range $cur := .Values.persistence -}}
+{{- $name := $cur.name | default (include "base.name" $) -}}
+{{- if (not (lookup "v1" "PersistentVolume" "" $name)) }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  {{- include "base.metadata" $ | nindent 2 }}
+  {{- include "base.metadata" $ | indent 2 }}
   {{- if $cur.name }}
   name: "{{ $cur.name }}"
   {{- end }}
@@ -40,4 +42,5 @@ spec:
                 - {{ $cur.nodeSelector }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}

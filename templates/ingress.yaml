@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  {{- include "base.metadata" . | nindent 2 }}
+  {{- include "base.metadata" . | indent 2 }}
   {{- if .Values.ingress.annotations }}
   annotations:
     {{ toYaml .Values.ingress.annotations | indent 4 }}
@@ -17,7 +17,7 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: {{ template "base.fullname" $ }}
+            name: {{ $entry.service | default (include "base.fullname" $) }}
             port:
               {{- if eq "string" (printf "%T" $entry.port) }}
               name: {{ $entry.port }}

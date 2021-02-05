@@ -8,7 +8,10 @@ app.kubernetes.io/name: {{ include "base.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{ define "base.metadata" -}}
+{{- define "base.metadata" -}}
+{{- if .Values.namespaceOverride -}}
+  namespace: {{ .Values.namespaceOverride | quote }}
+{{- end }}
 name: {{ template "base.fullname" . }}
 labels:
   {{- include "base.selectorlabels" . | nindent 2 }}

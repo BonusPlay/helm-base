@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  {{- include "base.metadata" $ | nindent 2 }}
+  {{- include "base.metadata" $ | indent 2 }}
   {{- if $cur.name }}
   name: "{{ $cur.name }}"
   {{- end }}

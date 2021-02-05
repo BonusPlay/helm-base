@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  {{- include "base.metadata" $ | nindent 2 }}
+  {{- include "base.metadata" $ | indent 2 }}
   {{- if $cur.name }}
   name: "{{ $cur.name }}"
   {{- end }}
