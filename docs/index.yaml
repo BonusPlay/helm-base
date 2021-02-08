@@ -2,7 +2,16 @@ apiVersion: v1
 entries:
   base:
   - apiVersion: v2
-    created: "2021-02-09T00:09:51.180566242+01:00"
+    created: "2021-02-09T00:13:02.430314828+01:00"
+    description: A base helm chart for deploying simple applications
+    digest: 3213256f65fb8ba93cf59bd3564da7eb20eb2b446e5bc1279c6242d194b37f3d
+    name: base
+    type: application
+    urls:
+    - https://bonusplay.github.io/helm-base/base-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    created: "2021-02-09T00:13:02.429350128+01:00"
     description: A base helm chart for deploying simple applications
     digest: 51c60b5ca964fb9cebcd1e673f80cb05a4fcadf16c6736b60d6a7c6f4baf85fc
     name: base
@@ -11,7 +20,7 @@ entries:
     - https://bonusplay.github.io/helm-base/base-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
-    created: "2021-02-09T00:09:51.17976872+01:00"
+    created: "2021-02-09T00:13:02.428937307+01:00"
     description: A base helm chart for deploying simple applications
     digest: 3f3be7a7def6d39186e1a401ee8e30ea88063c3cab358a75d589b5cecd2fa4ea
     name: base
@@ -19,4 +28,4 @@ entries:
     urls:
     - https://bonusplay.github.io/helm-base/base-0.1.0.tgz
     version: 0.1.0
-generated: "2021-02-09T00:09:51.179377993+01:00"
+generated: "2021-02-09T00:13:02.428416383+01:00"
