@@ -7,6 +7,6 @@ metadata:
   name: {{ $cur.name | quote }}
   {{- end }}
 data:
-{{ toYaml . | indent 2 }}
+{{ toYaml $cur.data | indent 2 }}
 ---
 {{ end }}
