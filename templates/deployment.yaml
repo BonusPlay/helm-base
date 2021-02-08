@@ -1,4 +1,4 @@
-{{ range $cur := .Values.deployments }}
+{{- range $cur := .Values.deployments -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

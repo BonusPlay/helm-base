@@ -1,4 +1,4 @@
-{{ range .Values.configMaps }}
+{{- range $cur := .Values.configMaps -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
