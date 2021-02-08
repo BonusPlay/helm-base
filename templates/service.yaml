@@ -4,7 +4,7 @@ kind: Service
 metadata:
   {{- include "base.metadata" $ | indent 2 }}
   {{- if $cur.name }}
-  name: "{{ $cur.name }}"
+  name: {{ $cur.name | quote }}
   {{- end }}
 spec:
   type: {{ $cur.type }}
